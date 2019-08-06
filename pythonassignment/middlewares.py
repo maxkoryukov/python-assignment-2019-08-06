@@ -6,7 +6,8 @@ Demo Middleware
 
 import traceback
 from django.utils.deprecation import MiddlewareMixin
-from pythonassignment.celery import save_exception_task
+from pythonassignment.tasks import save_exception_task
+
 
 class PersistExceptionsMiddleware(MiddlewareMixin):
     """Save exceptions to the database
