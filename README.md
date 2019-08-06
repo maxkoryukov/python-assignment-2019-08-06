@@ -8,6 +8,8 @@ Repository URL: https://github.com/maxkoryukov/python-assignment-2019-08-06
 
 First of all, get the sources.
 
+### Prerequisites
+
 To run the demo application you will need `docker` and `docker-compose`, because
 the application consists of 4 services:
 
@@ -15,6 +17,8 @@ the application consists of 4 services:
 * Django app
 * Django database
 * celery broker-database (_redis_ in this case)
+
+### Step by step
 
 1. Prepare DB by running:
 	```
