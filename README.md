@@ -36,10 +36,12 @@ After tests just run `docker-compose down` to clean up everything.
 **!!! Important !!!**
 
 Sometimes Postgres takes too long to start, so the web-service (Django), which
-depends on DB fails to start. I don't know about simple solutions for this
+depends on the DB, fails to start. I don't know about simple solutions for this
 issue (`docker-compose` has `depends_on` option, but it is the order of
-**starting** containers and `postgres` returns control earlier than DB is
-really initialized and ready to accept connections).
+**starting** containers **not waiting**; and `postgres`-container returns
+control earlier than DB is really initialized and ready to accept connections).
+
+## Test API
 
 OK, let's suppose that all the services are running. So, now we could test
 the API.
