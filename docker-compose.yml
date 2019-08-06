@@ -1,14 +1,32 @@
 version: '3'
 
 services:
-  db:
+
+  db.local:
     image: postgres:9.6.4
-  web:
-    build: .
+
+  broker.local:
+    image: redis
+
+  web.local:
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      - db.local
+      - broker.local
+
+  celery.local:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A pythonassignment worker -l info
+    volumes:
+      - .:/code
+    depends_on:
+      - broker.local
